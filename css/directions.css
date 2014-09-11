@@ -1,0 +1,30 @@
+.content {
+	margin: -21px auto auto auto;
+	background-color: rgba( 0, 0, 0, 0.3);
+}
+
+.title {
+	padding-top: 12px;
+	margin: 12px auto auto 64px;
+	color: #EA3669;
+	font-family: Open Sans, Helvetica, Trebuchet MS, Arial, sans-serif;
+	font-size: 20px;
+}
+
+.gettingStarted {
+	margin: 12px 100px auto 100px;
+	color: #DFDFDF;
+}
+
+.listHead {
+	margin: 12px auto auto 60px;
+}
+
+
+.code {
+	margin: auto auto auto -36px;
+	color: #DFDFDF;
+	background-color : rgba( 0, 0, 0, 0);
+	border: none;
+}
+

@@ -1,0 +1,277 @@
+<!doctype html>
+<html class="no-js" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <title>Gigabots Dashboard</title>
+    <!-- <META HTTP-EQUIV="Pragma" CONTENT="no-cache"> -->
+    <link rel="icon" type="image/png" href="assets/gigabots_favicon.png">
+	<link rel="shortcut icon" type="image/x-icon" href="assets/gigabots_favicon.ico">
+	<link href="css/main.css" rel="stylesheet" media="screen">
+	<link href="css/directions.css" rel="stylesheet" media="screen">
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600,800,700,300' rel='stylesheet' type='text/css'>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="css/bootstrap.css" media="screen">
+	<link rel="stylesheet" href="css/bootstrap.min.css" media="screen">
+    <link rel="stylesheet" href="css/bootstrap-theme.min.css" media="screen">
+</head>
+
+<body>
+<!-- navigation bar -->
+	<nav class="navbar navbar-custom navbar-static-top" role="navigation">
+		<div class="container-fluid">
+			<div class="navbar-header pull-left">
+		<!-- gigabots dashboard title -->
+				<a class="navbar-brand hidden-xs" id="titleLarge" href="http://thegigabots.app.bigbang.io/dash/index.html" title="The Gigabots Dashboard"><img style="max-height:48px; margin-top: -12px;" src="assets/gigabots_dashboard_logo_on_dark.png" alt="Gigabots Dashboard"></a>
+				<a class="navbar-brand visible-xs" id="titleSmall" href="http://thegigabots.app.bigbang.io/dash/index.html" title="The Gigabots Dashboard">Gigabots Dashboard</a>	
+			</div>
+		<!-- bot selector drop-down -->
+<!-- 	    <div class="nav navbar-header pull-left">  
+	      	<li class="dropdown">
+				<a class="dropdown-toggle" id="botSelector" data-toggle="dropdown" title="Control a Currently Connected Gigabot">Select Gigabot <span class="caret"></span></a>
+				<ul class="dropdown-menu" id="botSelectorList">
+	            <li class="divider" id="dropdownDivider"></li>
+	            <li><a id="addBot">Add a New Bot</a></li>
+		        </ul>
+	      	</li>
+	    </div> -->
+	  <!-- navbar collapse dropdown toggle button -->
+			<div class="nav navbar-header pull-right">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+		    </button>
+	    </div>
+		<!-- powered by big bang -->
+			<div class="nav navbar-nav navbar-right pull-right">
+		<!-- powered by big bang -->
+        <a id="poweredBy" target="_blank" href="http://getbigbang.com/" title="Get Big Bang"><img style="max-height:50px; margin-top: 0px;" src="assets/powered_by_big_bang_on_dark.png" alt="Powered by Big Bang"></a>
+      </div>
+    <!-- links for collapsing -->
+	    <div class="nav navbar-nav navbar-right collapse navbar-collapse">
+	    	<ul class="nav navbar-nav">
+	    	<!-- links -->
+	        <li><a href="index.html" title="Return to the Dashboard">Home</a></li>
+	        <li><a href="directions.html" title="Directions for Use">Directions</a></li>
+        	<li><a target="_blank" href="http://thegigabots.com/" title="About The Gigabots">About</a></li>
+        	<li id="poweredByText"><a target="_blank" href="http://getbigbang.com/" title="Get Big Bang">Powered by Big Bang</a></li>
+        	<li class="divider"></li>
+        	<li id="twitterText"><a target="_blank" href="https://twitter.com/TheGigabots" title="The Gigabots on Twitter">The Gigabots on Twitter</a></li>
+        	<li id="githubText"><a target="_blank" href="https://github.com/GigaBots" title="The Gigabots on GitHub">The Gigabots on GitHub</a></li>
+        </ul>
+		  </div><!-- /.navbar-collapse -->
+		</div><!-- /.container-fluid -->
+	</nav>
+
+
+<!-- page content -->
+	<div class="content" -webkit-overflow-scrolling: touch>
+
+	<h1 class="title">Getting Started</h1>
+
+	<p class="gettingStarted">Click on the 'Select Gigabot' drop-down menu in the navigation bar above the dashboard. This will display a list of the robots currently connected to the Big Bang channel for The Gigabots. Select a robot by clicking on a name. You will see the settings and data in your dashboard instantly update to those for this robot.</p>
+	<p class="gettingStarted">In the bottom right-hand corner of the dashboard, you will a 'Channel Activity' box. This shows everyone that's connected to the channel, with GitHub-style icons, and which bots users have selected. Because multiple user can control the same bot at the same time, it will also display live update regarding what users controlling the same bot as you are doing. From the 'Send a Message' box below that, you can send a short message to all users.</p>
+	<ul class="gettingStarted listHead">The controls are simple:
+		<li class="gettingStarted">You'll see the dashboard divided up into different motors. For each motor, you can flip which direction is actually forward or reverse using the checkbox 'Swap Directions.' You can adjust the speed between 0 and 700 degress of rotation per second, using the slider bar or using the '+' and '-' buttons for 50 degree/second increments. Holding down the 'Forward' or 'Reverse' buttons will cause the motor to rotate in one direction or the other.</li>
+		<li class="gettingStarted">For more flexibility, the any of the motors can be combined into a motor gang, so that they can be controlled together. For example, this can facilitate driving in a straight line by combining two motors for wheels on both sides of a bot (with their directions orientated similarly) or turning on a spot by combining two motors for wheels (with their direcitons orientated opposite from one another). </li>
+		<li class="gettingStarted">For ease of use when not on a touchscreen device, there are also some keyboard shortcuts for controlling motors and gangs, as follows.</li>
+		<li class="gettingStarted">asdf</li>
+	</ul>
+	<p class="gettingStarted">On the left-hand side of the dashboard, you will see a box displaying the name of your selected bot, its current battery level, and a button for pausing/resuming the dashhboard. Below that is data from various sensors available, which updates in realtime.</p>
+	<p class="gettingStarted">At the bottom of the dashboard, there is a read-eval-print-loop (REPL) / console-based text editor. You can use this to make calls with the Gigabots API (described further below). This is ideal for programming bot behaviors, as entire blocks of code can be written or placed in the editor and run.</p>
+
+	<h1 class="title">Sample API Methods</h1>
+
+	<pre class="code">
+		
+		bot.g1.rotateTo(200);
+
+		gangRotate(1,200);
+
+		function gangRotate (gangId, position) {
+			bot.beep();
+			var motorPosition;
+			var gangedMotors = {}
+			for( var m in motors ) {
+				if( gangs[ gangId ][m] === true ) {
+					gangedMotors[m] = {}
+					var motorData = channel.getKeyspace(botId).get(m);
+					gangedMotors[m].oldMotorPosition = motorData.position;
+					gangedMotors[m].newMotorPosition = motorData.position + position;		
+				}
+			}
+			console.dir(gangedMotors);
+			for( var i=1; i<=position; i++ ) {
+				for( var n in gangedMotors ) {
+					var command = bot[n]rotateTo(gangedMotors[m].newMotorPosition-position+i);
+					channel.publish({ "type": "js", "js": command, "recipient": botId });
+				}
+			}
+		}
+
+
+
+		channel.publish({
+			"type":"js",
+			"js": "function beeperTest() {
+				bot.beep();
+				bot.a.rotateTo(100);
+				bot.beep();
+			}",
+			"recipient": botId
+		});
+
+
+		function beeperTest() {
+				bot.beep();
+				bot.beep();
+		}
+
+		beeperTest(); //or beepTest()
+
+		function moveMotors(motor1, motor2, position) {
+			bot.beep();
+			bot[motor1].rotateTo(position);
+			bot[motor2].rotateTo(position);
+		}
+
+
+
+		function moveUntil(motor) {
+			bot.beep();
+			bot[motor].rtz();
+			var position = 0;
+			for (var i = 0; i<=1000; i++ ) {
+				var touchData = channel.getKeyspace(botId).get('S3');
+				if( touchData.values[0] === 0 ) {
+					position++;
+					bot[motor].rotateTo(position);
+				}
+			}
+		}
+
+		function moveUntil(motor) {
+			//var motorData = channel.getKeyspace(botId).get('b');
+			bot[b].rtz();
+			var position = 0;
+			//var position = motorData.position;
+			//var data = channel.getKeyspace(botId).get('S3');
+			for (var i = 0; i<=1000; i++ ) {
+				//var touchData = channel.getKeyspace(botId).get('S3');
+				//if( touchData.values[0] === 0 ) {
+					position++;
+					bot[motor].rotateTo(position);
+				//}
+			}
+			bot.beep();
+		}
+
+		function motorToZero(motor) {
+			bot[motor].rtz();
+			bot.beep();
+		}
+
+		function beepIfTouched() {
+			bot.beep();
+			var touchData = channel.getKeyspace(botId).get('S3');
+			if( touchData.values[0] === 1 ) {
+				bot.sing();
+			}
+			else {
+				bot.beep();
+			}
+		}
+
+		function driveWith(motor1,motor2,position) {
+			bot[motor1].rtz();
+			bot[motor2].rtz();
+			bot.beep();
+			for( var i=1; i<=position; i+=10 ) {
+				bot[motor1].rotateTo(i);
+				bot[motor2].rotateTo(i);
+			}
+		}
+
+		function spinWith(motor1,motor2,position) {
+			for( var i=1; i<=position; i+=10 ) {
+				bot[motor1].rotateTo(i);
+				bot[motor2].rotateTo(-i);
+			}
+		}
+
+
+		function publish(botCode) {
+		    channel.publish({ "type": "js", "js": botCode, "recipient": botId });
+		}
+
+		for(var i=0; i<=700; i+=20) {
+			var touchData = channel.getKeyspace(botId).get('S3');
+			if ( touchData.values[0] === 0 ) {
+				var botCode = "bot.d.rotateTo(" + i.toString() + ")"
+				channel.publish({ "type": "js", "js": botCode, "recipient": botId });
+			}
+			else {
+				channel.publish({ "type": "js", "js": "bot.beep()", "recipient": botId });
+			}
+		}
+
+		for(var i=0; i<=700; i+=20) {
+			if ( touchStatus === false ) {
+				var botCode = "bot.d.rotateTo(" + i.toString() + ")"
+				channel.publish({ "type": "js", "js": botCode, "recipient": botId });
+			}
+			else {
+				channel.publish({ "type": "js", "js": "bot.beep()", "recipient": botId });
+			}
+		}
+
+
+		if (bot.sensors.pressedAction.result === true ) {
+			bot.beep();
+			bot.beep();
+		}
+
+		if (bot.pressedAction.result(Boolean.valueOf(sample[0] == 1.0F))) {
+		bot.beep();
+		}
+
+	</pre>
+
+
+	</div>
+<!-- footer -->
+	<footer class="main-footer hidden-sm hidden-xs">
+		<div class="container-fluid"
+			<div class="row">
+				<div class="col-md-6 footer-text" id="rights">
+					<p>All Rights Reserved, <a target="_blank" href="http://thegigabots.com" title="Visit The Gigabots">TheGigabots.com</a></p>
+				</div>
+				<div class="col-md-6" id="social-media-large">
+					<p class="pull-right site-icon" style="margin-top: 8px; margin-bottom: -8px;">
+						<a target="_blank" href="https://twitter.com/TheGigabots" title="Follow us on Twitter"><span data-icon="&#xe17d;"></span></a>
+						<a target="_blank" href="https://github.com/GigaBots" title="Check us out on GitHub"><span data-icon="&#xe177;"></span></a>
+					</p>
+				</div>
+			</div>
+		</div>
+	</footer>
+	<footer class="mobile-footer visible-sm visible-xs">
+		<div class="container-fluid"
+			<div class="row">
+				<p class="footer-text">All Rights Reserved, <a target="_blank" href="http://thegigabots.com" title="Visit The Gigabots">TheGigabots.com</a></p>
+			</div>
+			<div class="row">
+				<p class="site-icon" style="margin-bottom:-4px;">
+					<a target="_blank" href="https://twitter.com/TheGigabots" title="Follow us on Twitter"><span aria-hidden="true" data-icon="&#xe17d;"></span></a>
+					<a target="_blank" href="https://github.com/GigaBots" title="Check us out on GitHub"><span aria-hidden="true" data-icon="&#xe177;"></span></a>
+				</p>
+			</div>
+		</div>
+	</footer>
+
+</body>
+
+
+</html>
