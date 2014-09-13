@@ -118,9 +118,13 @@
 	        ctx.fillText('Loading Video Stream...', videoCanvas.width/2-69, videoCanvas.height/2-6);
 
 	        // Setup the WebSocket connection and start the player
+	        var websocketURL = '';
 	        // var client = new WebSocket('ws://192.168.1.108:8084'); // on pi's local network
-	        var wsClient = new WebSocket('ws://ec2-54-68-114-21.us-west-2.compute.amazonaws.com:8084/');
-	        var player = new jsmpeg(wsClient, {canvas: videoCanvas});
+	        //var wsClient = new WebSocket('ws://ec2-54-68-114-21.us-west-2.compute.amazonaws.com:8084/');
+	        // var wsClient = new WebSocket( websocketURL );
+	        // var player = new jsmpeg(wsClient, {canvas: videoCanvas});
+	        var wsClient;
+	        var player;
 
 	    </script>
 	<!-- progress bar -->

@@ -25,7 +25,8 @@ var gameStates = {}
 // global bot variables stored in client's browser
 var botStore = { // client id (GUID) : bot name
     'fakeBotId1' : 'Fake Bot 1',
-    'fakeBotId2' : 'Fake Bot 2'
+    'fakeBotId2' : 'Fake Bot 2',
+    'fakeHansBotId' : 'Hans'
 }
 var botId = "", botIndex = 0, botName = "";
 var bot = { nameDisplay : "" }
@@ -77,21 +78,34 @@ function appendDropdown( robotClientId ) {
     subPara.appendChild( node ); // append the text to the new link element
     para.setAttribute("class", "botName"); // "botName" class to the new element
     para.setAttribute("id", robotClientId ); // set id of the new element to be the bot's id
+    // para.setAttribute("data-placement", "right");
+    // para.setAttribute("data-toggle", "popover");
+    // para.setAttribute("rel", "popover");
     para.appendChild( subPara ); // append the link element (containing bot name) to the new list element
     var element = document.getElementById( "botSelectorList" ); // get the parent dropdown menu element, with id "botSelectorList"
     var child = document.getElementById( "dropdownDivider" ); // get the element we want to place the new bot above
     element.insertBefore(para,child); // append the new list element to the dropdown menu element, inserting it above the divider element
     var newString = "#" + robotClientId;
     // if ( robotClientId === 'fakeBotId2') {
-    //     var image = '<img src="./assets/hans.png" width="256">';
-    //     $(newString).on('DOMParaInserted', function() {
-    //         $(this).popover({
-    //         placement: 'right',
-    //         content: image,
-    //         html: true,
-    //         trigger: 'hover',
+    //     var image = '<img src="/assets/hans.png" width="256">';
+    //     // $(newString).hover(function() {
+    //     //     $(this).popover({
+    //     //     placement: 'right',
+    //     //     content: image,
+    //     //     html: true,
+    //     //     trigger: 'hover',
+    //     //     });
+    //     // });
+    //     // $.ajaxComplete(function() {
+    //     // $(document).ready(function() {
+    //         $('[rel=popover]').popover({
+    //             placement: 'right',
+    //             content: image,
+    //             html: true,
+    //             trigger: 'hover'
     //         });
-    //     });
+    //     // });
+    //     // });
     // }
   /* action once a bot is selected */
     $( newString ).click( function() {
@@ -108,8 +122,54 @@ function appendDropdown( robotClientId ) {
         // bot name display on dashboard in system box
         displayName( botName );
         sendChatMessage( client.clientId(), 'Selected ' + botName + '.' );
+        // delete wsClient.bot;
+        // delete player.bot;
+        // wsClient = {
+        //     'bot' : ''
+        // }
+        // player = {
+        //     'bot' : ''
+        // }
+        if ( botName === 'Hans' ) {
+            websocketURL = 'ws://ec2-54-68-114-21.us-west-2.compute.amazonaws.com:8084/';
+            if ( websocketURL !== '' ) {
+                delete WebSocket.prototype.URL;
+                delete WebSocket.prototype.url;
+                WebSocket.prototype.URL = websocketURL;
+                WebSocket.prototype.url = websocketURL;
+                console.log("deleting");
+            }
+            wsClient = new WebSocket( websocketURL );
+            if ( player !== '' ) {
+                delete jsmpeg.prototype.client;
+            }
+            player = new jsmpeg(wsClient, {canvas: videoCanvas});
+            console.log("Hans:");
+            console.dir(wsClient);
+            console.dir(player);
+        }
+        else {
+            websocketURL = 'ws://ec2-54-68-114-21.us-west-2.compute.amazonaws.com:8050/';
+            if ( websocketURL !== '' ) {
+                delete WebSocket.prototype.URL;
+                delete WebSocket.prototype.url;
+                WebSocket.prototype.URL = websocketURL;
+                WebSocket.prototype.url = websocketURL;
+                console.log("deleting");
+            }
+            wsClient = new WebSocket( websocketURL );
+            if ( player !== '' ) {
+                delete jsmpeg.prototype.client;
+            }
+            jsmpeg.prototype.client = wsClient;
+            player = new jsmpeg(wsClient, {canvas: videoCanvas});
+            console.log("other:");
+            console.dir(wsClient);
+            console.dir(player);
+        }
     });
 }
+
 // add bots to drop-down menu in navbar (here, it's just for bots that are declared in botStore - our fakebots)
 for ( var k in botStore ) {
     appendDropdown( k );
