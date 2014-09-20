@@ -341,9 +341,6 @@ html::-WebKit-scrollbar-thumb {
 }
 
 @media (max-width: 1149px) {
-	#videoCanvas {
-		margin-left: 285px; /* prevent the video canvas from moving to to the left, since it's otherwise centered */
-	}
 	#progressBar {
 		margin-left: 265px;
 	}
