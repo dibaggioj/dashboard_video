@@ -78,9 +78,6 @@ function appendDropdown( robotClientId ) {
     subPara.appendChild( node ); // append the text to the new link element
     para.setAttribute("class", "botName"); // "botName" class to the new element
     para.setAttribute("id", robotClientId ); // set id of the new element to be the bot's id
-    // para.setAttribute("data-placement", "right");
-    // para.setAttribute("data-toggle", "popover");
-    // para.setAttribute("rel", "popover");
     para.appendChild( subPara ); // append the link element (containing bot name) to the new list element
     var element = document.getElementById( "botSelectorList" ); // get the parent dropdown menu element, with id "botSelectorList"
     var child = document.getElementById( "dropdownDivider" ); // get the element we want to place the new bot above
@@ -100,9 +97,12 @@ function appendDropdown( robotClientId ) {
         setSensorIDs();
         // bot name display on dashboard in system box
         displayName( botName );
-        document.getElementById( "botSelector" ).innerHTML = botName.slice(0,13) + ' <span class="caret"></span>';
-        document.getElementById( "botSelector" ).title = "Select a Different Gigabot to Control";
-        document.getElementById( "botSelector" ).style.color = "#F8F8F8";
+        with ( document.getElementById("botSelector") ) {
+            // #botSelector already has these properties, we're just changing their values here. Don't specify properties here, as they would be added to window
+            innerHTML = botName.slice(0,13) + ' <span class="caret"></span>';
+            title = "Select a Different Gigabot to Control";
+            style.color = "#F8F8F8";
+        }
         sendChatMessage( client.clientId(), 'Selected ' + botName + '.' );
         // delete wsClient.bot;
         // delete player.bot;
