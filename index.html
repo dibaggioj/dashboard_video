@@ -28,7 +28,7 @@
 		<!-- bot selector drop-down -->
 	    <div class="nav navbar-header pull-left">  
 	      	<li class="dropdown">
-				<a class="dropdown-toggle" id="botSelector" data-toggle="dropdown" title="Control a Currently Connected Gigabot">Select Gigabot <span class="caret"></span></a>
+				<a class="dropdown-toggle" id="botSelector" data-toggle="dropdown" title="Select a Currently Connected Gigabot to Control">Select Gigabot <span class="caret"></span></a>
 				<ul class="dropdown-menu" id="botSelectorList">
 	            <li class="divider" id="dropdownDivider"></li>
 	            <li><a id="addBot">Add a New Bot</a></li>
@@ -115,12 +115,15 @@
 	        var ctx = videoCanvas.getContext('2d');
 	        ctx.font = '13px Arial';
 	        ctx.fillStyle = '#DDD';
-	        ctx.fillText('Loading Video Stream...', videoCanvas.width/2-69, videoCanvas.height/2-6);
+	        // ctx.textAlign = 'center';
+	        var xVideo = videoCanvas.width / 2 - 69;
+      		var yVideo = videoCanvas.height / 2 - 6;
+	        ctx.fillText('Loading Video Stream...', xVideo, yVideo);
 
 	        // Setup the WebSocket connection and start the player
 	        var websocketURL = '';
 	        // var client = new WebSocket('ws://192.168.1.108:8084'); // on pi's local network
-	        //var wsClient = new WebSocket('ws://ec2-54-68-114-21.us-west-2.compute.amazonaws.com:8084/');
+	        // var wsClient = new WebSocket('ws://ec2-54-68-114-21.us-west-2.compute.amazonaws.com:8084/');
 	        // var wsClient = new WebSocket( websocketURL );
 	        // var player = new jsmpeg(wsClient, {canvas: videoCanvas});
 	        var wsClient;

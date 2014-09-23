@@ -26,7 +26,7 @@ var gameStates = {}
 var botStore = { // client id (GUID) : bot name
     'fakeBotId1' : 'Fake Bot 1',
     'fakeBotId2' : 'Fake Bot 2',
-    'fakeHansBotId' : 'Hans'
+    'fakeHansBotId' : 'Fake Hans'
 }
 var botId = "", botIndex = 0, botName = "";
 var bot = { nameDisplay : "" }
@@ -86,27 +86,6 @@ function appendDropdown( robotClientId ) {
     var child = document.getElementById( "dropdownDivider" ); // get the element we want to place the new bot above
     element.insertBefore(para,child); // append the new list element to the dropdown menu element, inserting it above the divider element
     var newString = "#" + robotClientId;
-    // if ( robotClientId === 'fakeBotId2') {
-    //     var image = '<img src="/assets/hans.png" width="256">';
-    //     // $(newString).hover(function() {
-    //     //     $(this).popover({
-    //     //     placement: 'right',
-    //     //     content: image,
-    //     //     html: true,
-    //     //     trigger: 'hover',
-    //     //     });
-    //     // });
-    //     // $.ajaxComplete(function() {
-    //     // $(document).ready(function() {
-    //         $('[rel=popover]').popover({
-    //             placement: 'right',
-    //             content: image,
-    //             html: true,
-    //             trigger: 'hover'
-    //         });
-    //     // });
-    //     // });
-    // }
   /* action once a bot is selected */
     $( newString ).click( function() {
         botId = this.id;
@@ -121,6 +100,9 @@ function appendDropdown( robotClientId ) {
         setSensorIDs();
         // bot name display on dashboard in system box
         displayName( botName );
+        document.getElementById( "botSelector" ).innerHTML = botName.slice(0,13) + ' <span class="caret"></span>';
+        document.getElementById( "botSelector" ).title = "Select a Different Gigabot to Control";
+        document.getElementById( "botSelector" ).style.color = "#F8F8F8";
         sendChatMessage( client.clientId(), 'Selected ' + botName + '.' );
         // delete wsClient.bot;
         // delete player.bot;
@@ -130,7 +112,7 @@ function appendDropdown( robotClientId ) {
         // player = {
         //     'bot' : ''
         // }
-        if ( botName === 'Hans' ) {
+        if ( botName === 'Fake Hans' ) {
             websocketURL = 'ws://ec2-54-68-114-21.us-west-2.compute.amazonaws.com:8084/';
             if ( websocketURL !== '' ) {
                 delete WebSocket.prototype.URL;
@@ -140,16 +122,20 @@ function appendDropdown( robotClientId ) {
                 console.log("deleting");
             }
             wsClient = new WebSocket( websocketURL );
-            if ( player !== '' ) {
+            if ( typeof player !== 'undefined' ) {
+                player.stop();
                 delete jsmpeg.prototype.client;
             }
             player = new jsmpeg(wsClient, {canvas: videoCanvas});
+            // player.stop( function() {
+            //     console.log("player connection lost");
+            // });
             console.log("Hans:");
             console.dir(wsClient);
             console.dir(player);
         }
         else {
-            websocketURL = 'ws://ec2-54-68-114-21.us-west-2.compute.amazonaws.com:8050/';
+            websocketURL = 'ws://192.168.1.101:8050/';
             if ( websocketURL !== '' ) {
                 delete WebSocket.prototype.URL;
                 delete WebSocket.prototype.url;
@@ -158,10 +144,11 @@ function appendDropdown( robotClientId ) {
                 console.log("deleting");
             }
             wsClient = new WebSocket( websocketURL );
-            if ( player !== '' ) {
+            if ( typeof player !== 'undefined' ) {
+                player.stop();
                 delete jsmpeg.prototype.client;
             }
-            jsmpeg.prototype.client = wsClient;
+            // jsmpeg.prototype.client = wsClient;
             player = new jsmpeg(wsClient, {canvas: videoCanvas});
             console.log("other:");
             console.dir(wsClient);
@@ -169,6 +156,8 @@ function appendDropdown( robotClientId ) {
         }
     });
 }
+
+
 
 // add bots to drop-down menu in navbar (here, it's just for bots that are declared in botStore - our fakebots)
 for ( var k in botStore ) {
