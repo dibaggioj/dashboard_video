@@ -16,11 +16,13 @@ In the bottom right-hand corner of the dashboard, you will a 'Channel Activity' 
 
 The controls are simple:
 
-	You'll see the dashboard divided up into different motors. For each motor, you can flip which direction is actually forward or reverse using the checkbox 'Swap Directions.' You can adjust the speed between 0 and 700 degress of rotation per second, using the slider bar or using the '+' and '-' buttons for 50 degree/second increments. Holding down the 'Forward' or 'Reverse' buttons will cause the motor to rotate in one direction or the other.
+- You'll see the dashboard divided up into different motors. For each motor, you can flip which direction is actually forward or reverse using the checkbox 'Swap Directions.' You can adjust the speed between 0 and 700 degress of rotation per second, using the slider bar or using the '+' and '-' buttons for 50 degree/second increments. Holding down the 'Forward' or 'Reverse' buttons will cause the motor to rotate in one direction or the other.
 	
-	For more flexibility, the any of the motors can be combined into a motor gang, so that they can be controlled together. For example, this can facilitate driving in a straight line by combining two motors for wheels on both sides of a bot (with their directions orientated similarly) or turning on a spot by combining two motors for wheels (with their direcitons orientated opposite from one another).
+- For more flexibility, the any of the motors can be combined into a motor gang, so that they can be controlled together. For example, this can facilitate driving in a straight line by combining two motors for wheels on both sides of a bot (with their directions orientated similarly) or turning on a spot by combining two motors for wheels (with their direcitons orientated opposite from one another).
 	
-	For ease of use when not on a touchscreen device, there are also some keyboard shortcuts for controlling motors and gangs, as follows.
+- For ease of use when not on a touchscreen device, there are also some keyboard shortcuts for controlling motors and gangs, as follows:
+ 
+	asdf
 
 On the left-hand side of the dashboard, you will see a box displaying the name of your selected bot, its current battery level, and a button for pausing/resuming the dashhboard. Below that is data from various sensors available, which updates in realtime.
 
