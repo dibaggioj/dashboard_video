@@ -6,7 +6,7 @@ Gigabots Dashboard with Live Video Stream and Channel Activity
 
 This is for a Raspberry Pi with Pi Camera Module streaming MPEG1 video over a websocket, on top of Lego Mindstorm robot running The Gigabots Firmware (uses Big Bang). The robot can be remotely controlled in real-time and its live video stream can be viewed in this build of the web-based Gigabots Dashboard (uses Big Bang).
 
-Build 2.0.0
+Version 2.0 Build 2
 
 # Instructions for Use
 
